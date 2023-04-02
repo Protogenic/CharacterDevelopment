@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Category</title>
+</head>
+<body>
+<form action="#" th:action="@{/home}" th:object="${category}" method="post">
+  <label>Category name:</label>
+  <input type="text" th:field="*{name}" /><br/>
+    <label>Parent Category name:</label>
+    <select th:field="*{parentId}">
+        <option th:value="null">No parent Category</option>
+        <option th:each="category : ${categories}" th:value="${category.getId()}" th:text="${category.getName()}">
+        </option>
+    </select>
+
+  <button type="submit">Create</button>
+</form>
+</body>
+</html>

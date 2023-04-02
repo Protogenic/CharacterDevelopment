@@ -1,0 +1,7 @@
+Pomodoro Timer on ToDo session
+
+Hierarchy level: if parent_id = null -> level 1 and after child category get
+hierarchy level parent+1 so if child trying to become a parent of category
+where parent_level < child_level then exception
+
+drop list with accessible parent directories, you can apply hierarchy levels there

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+</head>
+<body>
+
+<p th:text="${category.getName() + ', ' + category.getLevel()}">VALUE</p>
+<br>
+
+<p>Child categories:</p>
+<div th:each="childCategory : ${childCategories}">
+    <a th:href="@{/home/{id}(id=${childCategory.getId()})}"
+       th:text="${childCategory.getName()}">user</a>
+</div>
+<br>
+
+<form th:method="DELETE" th:action="@{/home/{id}(id=${category.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+
+</body>
+</html>

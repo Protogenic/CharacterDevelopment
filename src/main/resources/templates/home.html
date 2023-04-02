@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,7 +7,7 @@
 <body>
 
 <div th:each="category : ${categories}">
-    <a th:href="@{/category/{id}(id=${category.getId()})}"
+    <a th:href="@{/home/{id}(id=${category.getId()})}"
        th:text="${category.getName() + ', ' + category.getLevel()}">user</a>
 </div>
 
