@@ -34,6 +34,10 @@ public class CategoriesService {
         return categoriesRepository.findCategoryByParentId(parentId);
     }
 
+    public List<Category> findCategoryByHierarchyLevelGreaterThan(Integer hierarchyLevel) {
+        return categoriesRepository.findCategoryByHierarchyLevelGreaterThan(hierarchyLevel);
+    }
+
     @Transactional
     public void save(Category category) {
         categoriesRepository.save(category);
@@ -46,6 +50,15 @@ public class CategoriesService {
 
     @Transactional
     public void delete(Category category) {
+        categoriesRepository.delete(category);
+    }
+
+    @Transactional
+    public void deleteWithChildren(Category category) {
+        for(Category c: findAllChildCategories(category.getId())) {
+            categoriesRepository.delete(c);
+        }
+
         categoriesRepository.delete(category);
     }
 }

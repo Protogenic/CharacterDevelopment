@@ -22,8 +22,6 @@ public class Category {
     @Column(name = "parent_id")
     private Integer parentId;
 
-    public Category(String name, int level) {
-        this.name = name;
-        this.level = level;
-    }
+    @Column(name = "hierarchy_level")
+    private int hierarchyLevel;
 }

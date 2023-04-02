@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface CategoriesRepository extends JpaRepository<Category, Integer> {
     List<Category> findCategoryByParentId(Integer parentId);
+
+    List<Category> findCategoryByHierarchyLevelGreaterThan(Integer hierarchyLevel);
 }

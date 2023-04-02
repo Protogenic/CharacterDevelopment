@@ -39,13 +39,15 @@ public class HomepageController {
 
     @PostMapping()
     public String create(@ModelAttribute("category") Category category) {
+        if (category.getParentId() != null)
+            category.setHierarchyLevel(categoriesService.findById(category.getParentId()).getHierarchyLevel() + 1);
         categoriesService.save(category);
         return "redirect:/home";
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
-        categoriesService.delete(categoriesService.findById(id));
+    @PostMapping("/{id}")
+    public String delete(@ModelAttribute("category") Category category) {
+        categoriesService.deleteWithChildren(category);
         return "redirect:/home";
     }
 }
