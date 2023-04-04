@@ -24,4 +24,7 @@ public class Category {
 
     @Column(name = "hierarchy_level")
     private int hierarchyLevel;
+
+    @OneToMany(mappedBy = "category")
+    private List<Task> tasks;
 }

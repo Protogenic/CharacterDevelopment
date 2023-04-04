@@ -61,4 +61,12 @@ public class CategoriesService {
 
         categoriesRepository.delete(category);
     }
+
+    @Transactional
+    public void addLevels(Category category) {
+        category.setLevel(category.getLevel() + 1);
+        if (category.getParentId() != null) {
+            addLevels(findById(category.getParentId()));
+        }
+    }
 }

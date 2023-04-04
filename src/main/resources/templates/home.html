@@ -12,8 +12,21 @@
 </div>
 
 <br/>
+<a href="category/add">Add new category</a>
 <hr/>
 
-<a href="home/add">Add new category</a>
+<div th:each="task : ${tasks}">
+
+    <form th:method="POST" th:action="@{/task/{id}(id=${task.getId()})}" th:object="${taskPassed}">
+        <span th:text="${task.getCategory() != null} ? ${task.getCategory().getName() + ','} : 'No category,'">task</span>
+        <span th:text="${task.getContent() + ' Deadline: ' + task.getDeadline()}"></span>
+    <input type="submit" value="Done" />
+   </form>
+</div>
+
+<br/>
+<a href="task/add">Add new task</a>
+<hr/>
+
 </body>
 </html>

@@ -11,12 +11,12 @@
 
 <p>Child categories:</p>
 <div th:each="childCategory : ${childCategories}">
-    <a th:href="@{/home/{id}(id=${childCategory.getId()})}"
+    <a th:href="@{/category/{id}(id=${childCategory.getId()})}"
        th:text="${childCategory.getName()}">childCategory</a>
 </div>
 <br>
 
-<form th:method="DELETE" th:action="@{/home/{id}(id=${category.getId()})}">
+<form th:method="DELETE" th:action="@{/category/{id}(id=${category.getId()})}">
     <input type="submit" value="Delete"/>
     If there are child repositories, they will be deleted too
 </form>
